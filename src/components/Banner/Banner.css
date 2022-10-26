@@ -1,0 +1,21 @@
+.tooltip {
+    display: none;
+}
+
+.tooltip_image:hover .tooltip {
+    display: block;
+}
+
+.banner {
+    position: relative;
+}
+
+.banner::before {
+    content: '';
+    background-color: rgba(3, 23, 40, 0.573);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
