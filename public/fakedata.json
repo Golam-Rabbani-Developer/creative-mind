@@ -1,0 +1,58 @@
+[
+    {
+        "picture": "https://iili.io/DPxMI1.jpg",
+        "price": 20,
+        "name": "Special Courses For Class - 6",
+        "instructor": "Erika Farrell",
+        "description": "DIGINETIC"
+    },
+    {
+        "picture": "https://iili.io/DPxVhF.jpg",
+        "price": 40,
+        "name": "Special Courses For Class - 7",
+        "instructor": "Sue Nicholson",
+        "description": "ATGEN"
+    },
+    {
+        "picture": "https://iili.io/DPxhBa.jpg",
+        "price": 23,
+        "name": "SSC Special Batch",
+        "instructor": "Lorna Stein",
+        "description": "ANIVET"
+    },
+    {
+        "picture": "https://iili.io/DPxWLg.png",
+        "price": 20,
+        "name": "SSC Special Batch",
+        "instructor": "Wilcox Skinner",
+        "description": "GRAINSPOT"
+    },
+    {
+        "picture": "https://iili.io/DPxO2R.jpg",
+        "price": 34,
+        "name": "Special Courses For Class -8 ",
+        "instructor": "Tia Hardy",
+        "description": "BLANET"
+    },
+    {
+        "picture": "https://iili.io/DicGGp.jpg",
+        "price": 21,
+        "name": "Special Courses For Class -8 ",
+        "instructor": "Bird Estes",
+        "description": "INRT"
+    },
+    {
+        "picture": "https://iili.io/DPxjEJ.png",
+        "price": 48,
+        "name": "Premium Course For XI -XII",
+        "instructor": "Andrea Mcneil",
+        "description": "VURBO"
+    },
+    {
+        "picture": "https://iili.io/DicM6N.jpg",
+        "price": 42,
+        "name": "Premium Course For XI -XII",
+        "instructor": "Connie Rush",
+        "description": "FRANSCENE"
+    }
+]

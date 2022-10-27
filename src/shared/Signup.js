@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../firebaseinit';
 import Loading from './Loading';
 import Socials from './Socials';
@@ -16,15 +16,23 @@ const Signup = () => {
     const [createUserWithEmailAndPassword, user, loading, error,
     ] = useCreateUserWithEmailAndPassword(auth);
 
+
+
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/'
+
+
     //adding loading spinner
     if (loading) {
         return <Loading type="spokes" color="red"></Loading>
     }
 
-    // getting the user 
+    // checking the user 
     if (user) {
-        navigate("/")
+        navigate(from, { replace: true })
     }
+
+
     const hanldeLogin = (e) => {
         e.preventDefault()
         createUserWithEmailAndPassword(email, password)

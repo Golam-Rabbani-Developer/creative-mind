@@ -3,7 +3,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../firebaseinit';
 import Socials from './Socials';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Loading from './Loading';
 
 
@@ -14,9 +14,13 @@ const Login = () => {
     const [signInWithEmailAndPassword, user, loading, error,] = useSignInWithEmailAndPassword(auth);
     const navigate = useNavigate()
 
+
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/'
+
     // checking the user 
     if (user) {
-        navigate("/")
+        navigate(from, { replace: true })
     }
 
     // adding the loading spinner 

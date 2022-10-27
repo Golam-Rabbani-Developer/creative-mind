@@ -1,23 +1,24 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import auth from '../firebaseinit';
 import Loading from './Loading';
 
 
 const Header = () => {
     const [user, loading] = useAuthState(auth)
+    const location = useLocation()
     if (loading) {
         return <Loading type="spokes" color="black"></Loading>
     }
-    console.log(user?.displayName)
+
     const links = <>
-        <li><Link className='text-xl ' to='/'>Courses</Link></li>
+        <li><Link className='text-xl ' to='/courses'>Courses</Link></li>
         <li><Link className='text-xl ' to='/'>FAQ</Link></li>
         <li><Link className='text-xl ' to='/'>Blogs</Link></li>
     </>
     return (
-        <div className='w-[95%] mx-auto md:w-[85%] absolute top-0 md:left-24 z-40 bg-none text-white'>
+        <div className={`w-[95%] mx-auto md:w-[85%] z-40 bg-none  ${location.pathname === "/" || location.pathname === "/home" ? "absolute top-0 md:left-24 text-white" : "text-slate-900 border-b pb-3"} `}>
             <div className="navbar">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -43,7 +44,7 @@ const Header = () => {
                         user
                             ?
                             <div className="avatar online tooltip_image cursor-pointer">
-                                <div className={`w-[50px] rounded-full `}>
+                                <div className={`w-[50px] rounded-full`}>
                                     <img src="https://placeimg.com/192/192/people" alt='user-pic' />
 
                                 </div>

@@ -1,7 +1,12 @@
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'poppins': ['Poppins', 'sans-serif'],
+        'roboto': ['Roboto Slab', 'serif'],
+      },
+    },
   },
   plugins: [require("daisyui")],
 }

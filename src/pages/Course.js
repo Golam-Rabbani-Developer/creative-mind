@@ -1,19 +1,16 @@
 import React from 'react';
-import Banner from '../components/Banner/Banner';
 import Courses from '../components/Banner/Courses';
-import Features from '../components/Banner/Features';
 import Footer from '../shared/Footer';
 import Header from '../shared/Header';
 
-const Home = () => {
+const Course = () => {
     return (
-        <div className='font-poppins' >
+        <div>
             <Header></Header>
-            <Banner></Banner>
-            <Features></Features>
+            <Courses></Courses>
             <Footer></Footer>
         </div>
     );
 };
 
-export default Home;
+export default Course;
