@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useLocation } from 'react-router-dom';
 import { BsMoonStars } from 'react-icons/bs'
 import { signOut } from 'firebase/auth'
 import auth from '../firebaseinit';
 import Loading from './Loading';
+import { ThemeContext } from '../App';
 
 
 const Header = () => {
     const [user, loading] = useAuthState(auth)
     const location = useLocation()
+    const [dark, setDark] = useContext(ThemeContext)
+
     if (loading) {
         return <Loading type="spokes" color="black"></Loading>
     }
@@ -53,13 +56,13 @@ const Header = () => {
                                     </div>
                                     <span className='font-bold absolute right-16 tooltip'>{user?.displayName}</span>
                                 </div>
-                                <span className='border p-3 hover:border-white'>  <BsMoonStars /></span>
+                                <span onClick={() => setDark(!dark)} className={`border px-3 py-[14px] transition-all duration-150  ease-out cursor-pointer ${dark ? 'bg-black text-white' : 'text-black bg-white'}`}>  <BsMoonStars /></span>
                                 <button onClick={() => signOut(auth)} className="btn btn-primary rounded-none ">Log Out</button>
 
                             </div>
                             :
                             <div className='flex gap-2 items-center justify-center'>
-                                <span className='border px-3 py-[14px] transition-all duration-150 ease-out border-primary hover:border-black'>  <BsMoonStars /></span>
+                                <span onClick={() => setDark(!dark)} className={`border px-3 py-[14px] transition-all duration-150  ease-out cursor-pointer ${dark ? 'bg-black text-white' : 'text-black bg-white'}`}>  <BsMoonStars /></span>
                                 <Link to='/login' className="btn btn-primary rounded-none">Login</Link>
                             </div>
                     }
