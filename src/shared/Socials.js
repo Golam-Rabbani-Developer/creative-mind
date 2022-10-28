@@ -3,16 +3,22 @@ import { FcGoogle } from "react-icons/fc"
 import { BsGithub } from 'react-icons/bs'
 import { useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../firebaseinit';
+import { useLocation, useNavigate } from 'react-router-dom';
+import Loading from './Loading';
 const Socials = () => {
     const [signInWithGoogle, googleuser, googleloading, googleerror] = useSignInWithGoogle(auth);
     const [signInWithGithub, gituser, gitloading, giterror] = useSignInWithGithub(auth);
 
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/'
+    const navigate = useNavigate()
+
     if (googleloading || gitloading) {
-        return <p>Loading ...</p>
+        return <Loading type="spokes" color="black"></Loading>
     }
 
     if (gituser || googleuser) {
-        console.log(gituser || googleuser)
+        navigate(from, { replace: true })
     }
 
     return (

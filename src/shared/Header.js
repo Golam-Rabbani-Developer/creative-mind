@@ -1,6 +1,8 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useLocation } from 'react-router-dom';
+import {BsMoonStars} from 'react-icons/bs'
+import {signOut} from 'firebase/auth'
 import auth from '../firebaseinit';
 import Loading from './Loading';
 
@@ -15,7 +17,7 @@ const Header = () => {
     const links = <>
         <li><Link className='text-xl ' to='/courses'>Courses</Link></li>
         <li><Link className='text-xl ' to='/'>FAQ</Link></li>
-        <li><Link className='text-xl ' to='/'>Blogs</Link></li>
+        <li><Link className='text-xl ' to='/blogs'>Blogs</Link></li>
     </>
     return (
         <div className={`w-[95%] mx-auto md:w-[85%] z-40 bg-none  ${location.pathname === "/" || location.pathname === "/home" ? "absolute top-0 md:left-24 text-white" : "text-slate-900 border-b pb-3"} `}>
@@ -43,15 +45,20 @@ const Header = () => {
                     {
                         user
                             ?
-                            <div className="avatar online tooltip_image cursor-pointer">
+                            <div className='flex items-center justify-center gap-2'>
+                                <div className="avatar online tooltip_image cursor-pointer">
                                 <div className={`w-[50px] rounded-full`}>
                                     <img src="https://placeimg.com/192/192/people" alt='user-pic' />
 
                                 </div>
                                 <span className='font-bold absolute right-16 tooltip'>{user?.displayName}</span>
                             </div>
+                            <span className='border p-3 hover:border-white'>  <BsMoonStars/></span>
+                            <button onClick={()=> signOut(auth)} className="btn btn-primary rounded-none ">Log Out</button>
+                       
+                            </div>
                             :
-                            <Link to='/login' className="btn">Login</Link>
+                            <Link to='/login' className="btn btn-primary rounded-none">Login</Link>
                     }
 
                 </div>

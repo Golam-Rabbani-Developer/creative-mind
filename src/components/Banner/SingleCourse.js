@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { PDFDownloadLink } from '@react-pdf/renderer';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useSingleData } from '../../utilitis/getData';
 import { CgSidebarRight } from 'react-icons/cg'
 import { TiArrowRightThick } from 'react-icons/ti'
@@ -18,6 +18,7 @@ const serchItems = [
 
 const SingleCourse = () => {
     const { id } = useParams()
+    const navigate = useNavigate()
     const [course, setCourse] = useState({})
     const { data } = useSingleData(id, course, setCourse)
 
@@ -40,12 +41,12 @@ const SingleCourse = () => {
                                 }
                             </PDFDownloadLink>
                         </div>
+                        <button onClick={()=> navigate(`/checkout/${id}`)} className="btn btn-primary rounded-none "><span>GO For Premium </span><TiArrowRightThick className='inline-block ml-3' /></button>
                     </div>
 
                 </div>
             </div>
             <div className='mx-auto space-y-3 md:col-span-3 mt-12 text-start w-full col-span-12'>
-                <button className="btn btn-primary rounded-none w-full"><span>GO For Premium </span><TiArrowRightThick className='inline-block ms-3' /></button>
                 <h2 className='text-3xl font-bold text-start font-roboto'>Category of Courses</h2>
                 {
                     serchItems.map(item =>
