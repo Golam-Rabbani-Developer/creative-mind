@@ -1,8 +1,8 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useLocation } from 'react-router-dom';
-import {BsMoonStars} from 'react-icons/bs'
-import {signOut} from 'firebase/auth'
+import { BsMoonStars } from 'react-icons/bs'
+import { signOut } from 'firebase/auth'
 import auth from '../firebaseinit';
 import Loading from './Loading';
 
@@ -47,18 +47,21 @@ const Header = () => {
                             ?
                             <div className='flex items-center justify-center gap-2'>
                                 <div className="avatar online tooltip_image cursor-pointer">
-                                <div className={`w-[50px] rounded-full`}>
-                                    <img src="https://placeimg.com/192/192/people" alt='user-pic' />
+                                    <div className={`w-[50px] rounded-full`}>
+                                        <img src="https://placeimg.com/192/192/people" alt='user-pic' />
 
+                                    </div>
+                                    <span className='font-bold absolute right-16 tooltip'>{user?.displayName}</span>
                                 </div>
-                                <span className='font-bold absolute right-16 tooltip'>{user?.displayName}</span>
-                            </div>
-                            <span className='border p-3 hover:border-white'>  <BsMoonStars/></span>
-                            <button onClick={()=> signOut(auth)} className="btn btn-primary rounded-none ">Log Out</button>
-                       
+                                <span className='border p-3 hover:border-white'>  <BsMoonStars /></span>
+                                <button onClick={() => signOut(auth)} className="btn btn-primary rounded-none ">Log Out</button>
+
                             </div>
                             :
-                            <Link to='/login' className="btn btn-primary rounded-none">Login</Link>
+                            <div className='flex gap-2 items-center justify-center'>
+                                <span className='border px-3 py-[14px] transition-all duration-150 ease-out border-primary hover:border-black'>  <BsMoonStars /></span>
+                                <Link to='/login' className="btn btn-primary rounded-none">Login</Link>
+                            </div>
                     }
 
                 </div>
